@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: production
+
+    image: to_do_list:prod
+
+    ports:
+      - "80:80"
+
+    # рестартать контейнер при сбоях
+    restart: always

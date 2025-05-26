@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+
+    ports:
+      - "5173:5173"
+
+    # монтируем исходники и node_modules
+    volumes:
+      - ./:/app
+      - /app/node_modules
+
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+
+    stdin_open: true
+    tty: true
